@@ -1,20 +1,33 @@
-# Configuração de Painel para Zabbix
-panelIdPreamble: "zabbix-panel-"
-panels:
-  TUPI:
-    dataSource: "ZABBIX"
-    group: "VPNs_Unidades"
-    host: "VPN ERJ x CJF"
-    itemTag: "component: network"
-    item: "ICMP ping"
+#------------------------------------------------------------------------------
+# Configuração Flow Panel - Monitoramento ICMP Ping
+# Fonte de Dados: Zabbix
+#------------------------------------------------------------------------------
+
+apiVersion: 1
+
+cells:
+  icmp-monitor:
+    dataRef: "zabbix.icmpping"  # Item key padrão do Zabbix para ping
     label:
-      separator: "colon"
-      units: "ms" # Milissegundos
-      decimalPoints: 2
+      text: "TUPI"
+      separator: "none"
+      units: "status"
+      decimalPoints: 0
     labelColor:
-      gradientMode: "hue"
+      staticColor: "#000000"  # Cor do texto fixa
+    fillColor:
+      gradientMode: "discrete"
       thresholds:
-        - {color: "green", level: 0}   # Tudo OK
-        - {color: "red", level: 1}    # Alerta
+        - {color: "#4CAF50", level: 1}  # Up
+        - {color: "#F44336", level: 0}  # Down
+    geometry:
+      width: 120
+      height: 60
+      x: 520
+      y: 380
+    border:
+      width: 1
+      color: "#000000"
     link:
-      url: "http://monitor.ctupi.com"
+      url: "/d/zabbix-dashboard/zabbix-host-overview"
+      params: "?var-host=${HOST}"

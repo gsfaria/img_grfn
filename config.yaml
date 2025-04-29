@@ -1,9 +1,17 @@
----
+# Panel Config
 
-#------------------------------------------------------------------------------
-# YAML Aliases to simplify maintenance
+cellIdPreamble: "cell-"
+cells: 
+  drawio:
+    link:
+      url: "https://app.diagrams.net/?p=svgdata"
+   
 
-anchorLinks:
-  - link: &grafana
-      url: "http://monitor.ctupi.com:3000
-      params: "time"
+  TUPI:
+    color:
+    mode: 'value'
+    thresholds:
+        - value: 0
+            color: 'green'
+        - value: 1
+            color: 'red'

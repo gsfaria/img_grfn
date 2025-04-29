@@ -1,0 +1,9 @@
+---
+
+#------------------------------------------------------------------------------
+# YAML Aliases to simplify maintenance
+
+anchorLinks:
+  - link: &grafana
+      url: "http://monitor.ctupi.com:3000
+      params: "time"

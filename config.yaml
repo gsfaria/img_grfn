@@ -1,17 +1,19 @@
-# Panel Config
-
-cellIdPreamble: "cell-"
-cells: 
-  drawio:
-    link:
-      url: "https://app.diagrams.net/?p=svgdata"
-   
-
+# Configuração de Painel para Zabbix
+panelIdPreamble: "zabbix-panel-"
+panels:
   TUPI:
-    color:
-    mode: 'value'
-    thresholds:
-        - value: 0
-            color: 'green'
-        - value: 1
-            color: 'red'
+    dataSource: "ZABBIX"
+    group: "VPNs_Unidades"
+    item: "ICMP ping"
+    label:
+      separator: "colon"
+      units: "ms" # Milissegundos
+      decimalPoints: 2
+    labelColor:
+      gradientMode: "hue"
+      thresholds:
+        - {color: "green", level: 0}   # Tudo OK
+        - {color: "red", level: 1}    # Alerta
+    link:
+      url: "https://www.zabbix.com/"
+      params: "monitoring"

@@ -4,6 +4,8 @@ panels:
   TUPI:
     dataSource: "ZABBIX"
     group: "VPNs_Unidades"
+    host: "VPN ERJ x CJF"
+    itemTag: "component: network"
     item: "ICMP ping"
     label:
       separator: "colon"
@@ -15,5 +17,4 @@ panels:
         - {color: "green", level: 0}   # Tudo OK
         - {color: "red", level: 1}    # Alerta
     link:
-      url: "https://www.zabbix.com/"
-      params: "monitoring"
+      url: "http://monitor.ctupi.com"
